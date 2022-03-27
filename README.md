@@ -5,7 +5,7 @@ When user click the button, welcome tag prompt first.
 
 Ask how many charaters in the password, only accept 8 to 128 charaters.
 
-user could choose leave in this section.
+User could choose leave in this process.
 
 Ask what type of charaters do they need, including Uppercase, Lowercase, Number and Special charaters.
 
