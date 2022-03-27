@@ -1,36 +1,55 @@
 // Assignment code here
-var passwordCharactors="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
+//create string container of password chartors database.
+var passwordCharacters= ""
+
+//generate password function
 var generatePassword = function(passwordLengh){
   window.alert("Welcome to Password Generater!")
   //ask how many charactors does customer need.
   var chaLengh = window.prompt('How many charactors do you need in your password? please choose from 8 to 128');
   //transfer string to integer
   var passwordLengh = parseInt(chaLengh)
-    console.log(passwordLengh)
   //charactors are only available from 8 to 128
-  if (passwordLengh <8 || passwordLengh >128){
+  if (passwordLengh <8 || passwordLengh >128 ){
     window.alert("Please choose from 8 to 128")
+    //if choose not in 8 to 128, return and ask again.
     return generatePassword()
-  }else{
-
-    //convert all charactors to lowercase if not confirmed.
-    var upperaseConfirm =window.confirm("Do you want uppercase charators in your password?");
-    //convert all charactors to Uppercase if not confirmed.
+  }
+  //select password length between 8 to 128
+  else {
+    //add uppercase to the string database if confirm.
+    var upperaseConfirm = window.confirm("Do you want uppercase charators in your password?");
+    if (upperaseConfirm){
+      passwordCharacters = passwordCharacters + "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    };
+    //add lowercase to the string database if confirm.
     var lowercaseConfirm = window.confirm("Do you want lowercase charators in your password?");
-    //take out all numeric charators.
+    if (lowercaseConfirm){
+      passwordCharacters = passwordCharacters + "abcdefghijklmnopqrstuvwxyz"
+    };
+    //add number to the stgring database if confirm.
     var numericConfirm = window.confirm("Do you want numeric charators in your password?");
-    //take out all special charators.
-    var specialConfirm =window.confirm("Do you want special charators in your password?");
+    if (numericConfirm){
+      passwordCharacters = passwordCharacters + "0123456789"
+    };
+    //add special charactors to the stgring database if confirm.
+    var specialConfirm = window.confirm("Do you want special charators in your password?");
+    if (specialConfirm) {
+      passwordCharacters = passwordCharacters + " !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~"
+    };
     //ask again if all choose NO.
+    while (passwordCharacters === "" || passwordCharacters === null){
+      window.alert("Password created invalid, please choose characters in your password")
 
+    }
+ 
     //randomly pick password from passwordCharactors
     var result = " ";
     for (i=0; i < passwordLengh; i++){
-      result += passwordCharactors.charAt(Math.floor(Math.random()* passwordCharactors.length)); 
+      result += passwordCharacters.charAt(Math.floor(Math.random()* passwordCharacters.length)); 
     }
     return result;
-  }
-
+  } 
 
 
 }
